@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>Quick Thinking · Adroit Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07090b;--card:rgba(255,255,255,.05);--line:rgba(255,255,255,.12);--txt:#efe9df;--mut:#9a958b;--acc:#e0a24f;--acc2:#6ee7b7;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--txt);font-family:Outfit,system-ui,sans-serif;overflow-x:hidden;position:relative}
+.glow{position:fixed;inset:-20%;z-index:0;pointer-events:none;background:radial-gradient(40% 35% at 20% 15%,rgba(224,162,79,.22),transparent 70%),radial-gradient(45% 40% at 85% 40%,rgba(52,211,153,.15),transparent 70%),radial-gradient(50% 40% at 30% 95%,rgba(99,102,241,.14),transparent 70%);animation:drift 14s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(3%,-2%) scale(1.08)}}
+.noise{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.22;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");animation:grain 1s steps(4) infinite}
+@keyframes grain{25%{transform:translate(-2%,1%)}50%{transform:translate(1%,-2%)}75%{transform:translate(2%,2%)}}
+main{position:relative;z-index:2;max-width:520px;margin:0 auto;padding:22px 18px 40px;text-align:center}
+.brand{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--acc)}
+h1{font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(34px,9vw,46px);margin:6px 0 2px;animation:rise .9s both}
+.sub{color:var(--mut);font-size:13px}
+.by{display:inline-flex;gap:6px;align-items:center;margin-top:10px;padding:5px 12px;border:1px solid var(--line);border-radius:99px;background:var(--card);font-size:11.5px;color:var(--mut);backdrop-filter:blur(8px)}
+.by b{color:var(--txt);font-weight:500}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}}
+.tabs{display:flex;margin:30px auto 10px;padding:4px;border:1px solid var(--line);border-radius:99px;background:var(--card);backdrop-filter:blur(10px)}
+.tabs button{flex:1;border:0;background:none;color:var(--mut);font:500 14px Outfit;padding:11px 8px;border-radius:99px;cursor:pointer;transition:.3s}
+.tabs button.on{background:rgba(224,162,79,.85);color:#1a1208;box-shadow:0 4px 18px rgba(224,162,79,.3)}
+.hint{color:var(--mut);font-size:12.5px;min-height:18px;margin:8px 0 14px}
+.sel{position:relative;text-align:left}
+.sel>button{width:100%;display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border:1px solid rgba(224,162,79,.5);background:var(--card);backdrop-filter:blur(10px);color:var(--txt);font:500 15px Outfit;border-radius:14px;cursor:pointer}
+.menu{position:absolute;left:0;right:0;top:54px;z-index:20;max-height:300px;overflow:auto;padding:6px;border:1px solid var(--line);border-radius:16px;background:rgba(14,17,19,.96);backdrop-filter:blur(16px);display:none;box-shadow:0 20px 50px #000a}
+.menu.open{display:block;animation:rise .25s both}
+.menu div{padding:11px 12px;border-radius:10px;font-size:14.5px;cursor:pointer}
+.menu div:hover,.menu div.on{background:rgba(224,162,79,.16);color:var(--acc)}
+.stage{margin:46px 0 34px;min-height:150px;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.state{font-size:11.5px;letter-spacing:.22em;color:var(--acc);text-transform:uppercase;margin-bottom:12px}
+.topic{font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(34px,10vw,54px);line-height:1.1;padding:0 4px;word-break:break-word}
+.topic.spin{filter:blur(.6px);animation:flip .12s linear infinite;color:#cfc7ba}
+.topic.land{animation:land .7s cubic-bezier(.2,1.6,.4,1) both;text-shadow:0 0 30px rgba(224,162,79,.45)}
+@keyframes flip{0%{transform:translateY(-14px) rotateX(60deg);opacity:.2}60%{opacity:1}100%{transform:translateY(0) rotateX(0)}}
+@keyframes land{0%{transform:scale(.6);opacity:0;filter:blur(8px)}100%{transform:scale(1);opacity:1;filter:none}}
+.row{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap}
+.btn{border:1px solid var(--line);background:var(--card);color:var(--txt);font:500 14.5px Outfit;padding:13px 22px;border-radius:99px;cursor:pointer;backdrop-filter:blur(8px);transition:.25s}
+.btn:active{transform:scale(.96)}
+.btn.pri{background:var(--acc);border-color:var(--acc);color:#1a1208;box-shadow:0 8px 26px rgba(224,162,79,.3)}
+.btn[disabled]{opacity:.5;pointer-events:none}
+.gear{width:46px;height:46px;padding:0;font-size:18px}
+.count{font-size:12px;color:var(--mut);margin-top:16px}
+.modal{position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.6);backdrop-filter:blur(6px)}
+.modal.open{display:flex}
+.panel{width:100%;max-width:420px;text-align:left;padding:22px;border:1px solid var(--line);border-radius:22px;background:rgba(16,19,21,.97);animation:rise .3s both}
+.panel h3{margin:0 0 4px;font:600 22px 'Playfair Display',serif}
+.panel p{margin:0 0 18px;color:var(--mut);font-size:13px}
+.lab{display:flex;justify-content:space-between;font-size:12px;letter-spacing:.14em;color:var(--acc);margin-top:14px}
+input[type=range]{width:100%;accent-color:var(--acc)}
+.chk{display:flex;gap:10px;align-items:center;margin:18px 0;font-size:14px}
+.timer{display:none}
+.timer.show{display:block;animation:rise .5s both}
+.steps{display:flex;gap:8px;justify-content:center;margin:18px 0 22px}
+.steps span{flex:1;padding:11px 4px;border:1px solid var(--line);border-radius:12px;font-size:13px;color:var(--mut);background:var(--card);transition:.4s}
+.steps span.on{color:var(--acc2);border-color:rgba(110,231,183,.6);background:rgba(110,231,183,.1)}
+.ring{position:relative;width:min(280px,72vw);aspect-ratio:1;margin:0 auto}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:10}
+.ring .bg{stroke:rgba(255,255,255,.1)}
+.ring .fg{stroke:var(--acc);stroke-linecap:round;transition:stroke-dashoffset .25s linear,stroke .4s}
+.ring .t{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ring .n{font:500 clamp(44px,14vw,64px) 'Playfair Display',serif;color:var(--acc)}
+.ring .tp{font-size:12px;color:var(--mut);max-width:70%}
+.phase{font-size:12px;letter-spacing:.22em;color:var(--acc);text-transform:uppercase;margin-bottom:6px}
+.foot{margin-top:44px;font-size:12px;color:var(--mut);line-height:1.8}
+.foot b{color:var(--txt);font-weight:500}
+</style>
+</head>
+<body>
+<div class="glow"></div><div class="noise"></div>
+<main>
+  <div class="brand">Adroit Academy</div>
+  <h1>Quick Thinking</h1>
+  <div class="sub">Rohit Sir Coaching · Spoken English &amp; Personality Development</div>
+  <div class="by">created by <b>Anurag Maurya</b></div>
+
+  <div id="home">
+    <div class="tabs"><button id="m0" class="on">🧠 Quick Think</button><button id="m1">📝 Prepare &amp; Speak</button></div>
+    <div class="hint" id="hint"></div>
+    <div class="sel"><button id="selBtn"><span id="selTxt"></span><span>▾</span></button><div class="menu" id="menu"></div></div>
+    <div class="stage"><div class="state" id="state">Ready</div><div class="topic" id="topic">Tap Spin</div></div>
+    <div class="row"><button class="btn pri" id="spin">Spin</button><button class="btn" id="start"></button><button class="btn gear" id="gear" aria-label="Settings">⚙</button></div>
+    <div class="count" id="count"></div>
+  </div>
+
+  <div class="timer" id="timer">
+    <div class="phase" id="phase">Speak</div>
+    <div class="topic" id="ttopic" style="font-size:30px"></div>
+    <div class="steps" id="steps"><span class="on">Introduce</span><span>Explain</span><span>Example</span></div>
+    <div class="ring"><svg viewBox="0 0 100 100"><circle class="bg" cx="50" cy="50" r="44"/><circle class="fg" id="fg" cx="50" cy="50" r="44" stroke-dasharray="276.46" stroke-dashoffset="0"/></svg><div class="t"><div class="n" id="num">1:00</div><div class="tp" id="tp">Speak in English.</div></div></div>
+    <div class="row" style="margin-top:26px"><button class="btn" id="pause">Pause</button><button class="btn" id="close">Close</button></div>
+  </div>
+
+  <div class="foot">Speak clearly · Think fast · Don't stop<br>Coaching: <b>Rohit Sir's Adroit Academy</b> · Made by <b>Anurag Maurya</b></div>
+</main>
+
+<div class="modal" id="modal"><div class="panel">
+  <h3>Settings</h3><p>Timer lengths in whole minutes.</p>
+  <div class="lab"><span>SPEECH</span><b id="sv">1 min</b></div><input type="range" id="sp" min="1" max="10" value="1">
+  <div class="lab"><span>PREPARE</span><b id="pv">2 min</b></div><input type="range" id="pr" min="1" max="15" value="2">
+  <label class="chk"><input type="checkbox" id="mute"> Mute sound effects</label>
+  <button class="btn pri" style="width:100%" id="done">Done</button>
+</div></div>
+
+<script>
+const CATS={
+"✦ All Topics":null,
+"🎈 Kids Fun":["My Favourite Cartoon","A Magic Pencil","If I Were Invisible","My Best Friend","Ice Cream","My Pet Dog","A Rainy Day","The Moon","Superheroes","My Toy","Birthday Party","Playing in the Park","Elephant","My Dream Robot","Chocolate","A Day at the Zoo"],
+"🏫 School Life":["My School","My Favourite Teacher","Homework","Exam Fear","Lunch Break","Playground","Best Subject","Library","School Trip","Annual Day","Making New Friends","Group Study","Morning Assembly","Uniform","Mobile in School"],
+"🏠 Family & Home":["My Mother","My Father","Grandparents","Sunday at Home","Festival at Home","Helping in Kitchen","My Room","Family Dinner","Sibling Fights","Hand-Me-Down","Junk Drawer","My Neighbourhood","Morning Routine","Power Cut","A Family Trip"],
+"🍛 Food & Culture":["Samosa vs Pizza","Street Food","Tea or Coffee","Diwali","Holi","Eid","Christmas","Mango","My Favourite Sweet","Cooking","Indian Weddings","Carpet City Bhadohi","Ganga River","Village vs City","Tricolour"],
+"⚽ Sports & Games":["Cricket","Kabaddi","Football","Chess","Olympics","Yoga","Running","Video Games","Carrom","Winning vs Losing","Team Spirit","Swimming","My Sports Hero","Badminton","Kho-Kho"],
+"🌿 Nature":["Trees","Rivers","A Forest Walk","Rainbow","Monsoon","Save Water","Birds","Plastic Pollution","Sunrise","Mountains","Tigers","Climate Change","Butterfly","Clean India","Stars at Night"],
+"💻 Technology":["Mobile Phone","Artificial Intelligence","YouTube","Instagram Reels","Robots","Online Classes","Internet Safety","Electric Cars","Video Editing","Screen Time","Space Travel","Smart Watch","Cyber Crime","Drones","Future of Technology"],
+"🚀 Dreams & Future":["My Dream Job","Me After 10 Years","If I Were Prime Minister","Start My Own Business","A Doctor's Life","Be an Entrepreneur","Becoming a Pilot","Change the World","My Biggest Goal","Time Machine","Living on Mars","A Great Leader","My Role Model","Be a Content Creator","Be Self-Reliant"],
+"💡 Life & Values":["Honesty","Hard Work","Failure Teaches","Confidence","Respect","Kindness","Time is Money","Discipline","Friendship","Fear of Public Speaking","Say No Politely","Positive Thinking","Teamwork","Habits","Patience"],
+"💰 Money & Career":["Pocket Money","Saving Habit","Job vs Business","Interview Tips","Online Shopping","Small Shops","Social Media Earning","Teamwork at Work","First Salary","Leadership","Good Communication","Time Management","Work From Home","Learn a Skill","Stock Market Basics"]
+};
+const $=id=>document.getElementById(id);
+const KEYS=Object.keys(CATS);
+const ALL=[...new Set(Object.values(CATS).filter(Boolean).flat())];
+const pool=k=>CATS[k]||ALL;
+let S={mode:0,cat:KEYS[0],sp:1,pr:2,mute:false};
+try{Object.assign(S,JSON.parse(localStorage.getItem('adroitQT')||'{}'))}catch(e){}
+if(!CATS.hasOwnProperty(S.cat))S.cat=KEYS[0];
+const save=()=>{try{localStorage.setItem('adroitQT',JSON.stringify(S))}catch(e){}};
+let bags={},cur=null,busy=false,AC=null;
+
+/* ---------- sound ---------- */
+function ac(){try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume()}catch(e){}return AC}
+function tone(f,d,type='triangle',v=.06,when=0){if(S.mute)return;const c=ac();if(!c)return;const o=c.createOscillator(),g=c.createGain(),t=c.currentTime+when;o.type=type;o.frequency.value=f;g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g);g.connect(c.destination);o.start(t);o.stop(t+d)}
+const tick=p=>tone(520+p*500,.06,'square',.035);
+const chime=()=>[660,880,1320].forEach((f,i)=>tone(f,.5,'sine',.09,i*.12));
+const beep=()=>tone(1000,.12,'sine',.06);
+
+/* ---------- UI ---------- */
+function drawMenu(){const m=$('menu');m.innerHTML='';KEYS.forEach(k=>{const d=document.createElement('div');d.textContent=k;if(k===S.cat)d.className='on';d.onclick=()=>{S.cat=k;save();m.classList.remove('open');ui()};m.appendChild(d)})}
+function ui(){
+  $('selTxt').textContent=S.cat;
+  $('m0').className=S.mode===0?'on':'';$('m1').className=S.mode===1?'on':'';
+  $('hint').textContent=S.mode===0?'No preparation. Think quickly and speak!':'Get prep time first, then speak on the topic.';
+  $('start').textContent='Start '+(S.mode?S.pr+' min prep':S.sp+' min timer');
+  $('sp').value=S.sp;$('pr').value=S.pr;$('sv').textContent=S.sp+' min';$('pv').textContent=S.pr+' min';$('mute').checked=S.mute;
+  $('count').textContent=pool(S.cat).length+' topics in this category';
+  drawMenu();
+}
+$('m0').onclick=()=>{S.mode=0;save();ui()};$('m1').onclick=()=>{S.mode=1;save();ui()};
+$('selBtn').onclick=e=>{e.stopPropagation();$('menu').classList.toggle('open')};
+document.addEventListener('click',()=>$('menu').classList.remove('open'));
+$('gear').onclick=()=>$('modal').classList.add('open');
+$('done').onclick=()=>$('modal').classList.remove('open');
+$('sp').oninput=e=>{S.sp=+e.target.value;save();ui()};$('pr').oninput=e=>{S.pr=+e.target.value;save();ui()};
+$('mute').onchange=e=>{S.mute=e.target.checked;save()};
+
+/* ---------- spin (shuffle-bag: no repeats until all used) ---------- */
+function draw(){
+  const k=S.cat;
+  if(!bags[k]||!bags[k].length){const a=[...pool(k)];for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}if(a[a.length-1]===cur)a.unshift(a.pop());bags[k]=a}
+  return bags[k].pop();
+}
+function spin(){
+  if(busy)return;ac();busy=true;
+  const final=draw(),p=pool(S.cat),t=$('topic');
+  $('spin').disabled=true;$('start').disabled=true;$('spin').textContent='Spinning…';
+  $('state').textContent='Drawing…';t.className='topic spin';
+  const N=30;let i=0;
+  (function step(){
+    if(i<N){t.textContent=p[Math.random()*p.length|0];tick(i/N);const d=45+Math.pow(i/N,3)*380;i++;setTimeout(step,d)}
+    else{cur=final;t.textContent=final;t.className='topic land';$('state').textContent='Your topic';chime();busy=false;$('spin').disabled=false;$('start').disabled=false;$('spin').textContent='Spin again'}
+  })();
+}
+$('spin').onclick=spin;
+
+/* ---------- timer ---------- */
+let tm=null,left=0,total=0,phaseName='',paused=false,endAt=0;
+const C=276.46,fmt=s=>Math.floor(s/60)+':'+String(s%60).padStart(2,'0');
+function runPhase(name,mins,after){
+  phaseName=name;total=mins*60;left=total;paused=false;$('pause').textContent='Pause';
+  $('phase').textContent=name==='prep'?'Prepare':'Speak';
+  $('tp').textContent=name==='prep'?'Plan your points quietly.':'Speak in English.';
+  $('steps').style.visibility=name==='prep'?'hidden':'visible';
+  endAt=Date.now()+total*1000;clearInterval(tm);
+  const paint=()=>{
+    if(!paused)left=Math.max(0,Math.ceil((endAt-Date.now())/1000));
+    $('num').textContent=fmt(left);
+    $('fg').style.strokeDashoffset=C*(1-left/total);
+    $('fg').style.stroke=left<=10?'#f87171':'var(--acc)';
+    const el=total-left,idx=Math.min(2,Math.floor(el/total*3));
+    [...$('steps').children].forEach((s,j)=>s.className=j===idx?'on':'');
+    if(!paused&&left>0&&left<=5)beep();
+    if(left===0&&!paused){clearInterval(tm);chime();setTimeout(after,900)}
+  };
+  paint();tm=setInterval(paint,1000);
+}
+function begin(){
+  if(!cur){spin();return}
+  ac();$('home').style.display='none';$('timer').classList.add('show');$('ttopic').textContent=cur;
+  const speak=()=>runPhase('speak',S.sp,()=>{$('phase').textContent='Time up!';$('tp').textContent='Well done! 👏'});
+  S.mode?runPhase('prep',S.pr,speak):speak();
+}
+$('start').onclick=begin;
+$('pause').onclick=()=>{ac();if(!paused){paused=true;$('pause').textContent='Resume'}else{paused=false;endAt=Date.now()+left*1000;$('pause').textContent='Pause'}};
+$('close').onclick=()=>{clearInterval(tm);$('timer').classList.remove('show');$('home').style.display='block'};
+ui();
+</script>
+</body>
+</html>
